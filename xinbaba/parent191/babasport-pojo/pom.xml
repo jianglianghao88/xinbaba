@@ -6,4 +6,12 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>babasport-pojo</artifactId>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>cn.itcast.babasport</groupId>
+	    <artifactId>babasport-common</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
