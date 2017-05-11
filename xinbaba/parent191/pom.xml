@@ -7,5 +7,15 @@
   <modules>
   	<module>babasport-common</module>
   	<module>test</module>
+  	<module>babasport-pojo</module>
+  	<module>babasport-dao</module>
+  	<module>babasport-interface</module>
+  	<module>babasport-console</module>
+  	<module>babasport-portal</module>
+  	<module>babasport-login</module>
+  	<module>babasport-service-cob</module>
+  	<module>babasport-service-solr</module>
+  	<module>babasport-service-product</module>
+  	<module>babasport-service-cms</module>
   </modules>
 </project>
