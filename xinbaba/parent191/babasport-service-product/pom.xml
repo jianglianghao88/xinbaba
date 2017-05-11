@@ -7,4 +7,17 @@
   </parent>
   <artifactId>babasport-service-product</artifactId>
   <packaging>war</packaging>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>cn.itcast.babasport</groupId>
+	    <artifactId>babasport-interface</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>cn.itcast.babasport</groupId>
+	    <artifactId>babasport-dao</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
