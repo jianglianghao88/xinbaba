@@ -25,6 +25,6 @@
 			<property name="driverClassName" value="${driverClassName}"></property>
 			<property name="url" value="${url}"></property>
 			<property name="username" value="${username}"></property>
-			<property name="password" value="${username}"></property>
+			<property name="password" value="${password}"></property>
 		</bean>
 </beans>
