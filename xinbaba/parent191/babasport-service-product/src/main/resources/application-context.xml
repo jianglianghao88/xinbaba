@@ -19,17 +19,6 @@
    		http://www.springframework.org/schema/task/spring-task-4.0.xsd
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-
-		<!-- sqlSessionFactory -->
-		<bean class="org.mybatis.spring.SqlSessionFactoryBean">
-			<!-- 注入数据源 -->
-			<property name="dataSource" ref="dataSource"></property>
-			
-			<!-- 配置Mybatis核心文件所在位置 -->
-			<property name="configLocation" value="classpath:mybatis-config.xml"></property>
-		</bean>
 		
-		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-			<property name="basePackage" value="cn.itcast.core.dao"></property>
-		</bean>
+		<import resource="config/*.xml"/>
 </beans>
