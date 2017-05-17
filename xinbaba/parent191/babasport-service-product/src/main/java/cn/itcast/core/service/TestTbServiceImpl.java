@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.itcast.core.bean.TestTb;
 import cn.itcast.core.dao.TestTbDao;
 
-@Service
+@Service("testTbService")
 @Transactional
 public class TestTbServiceImpl implements TestTbService{
 

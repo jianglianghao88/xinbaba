@@ -1,8 +1,9 @@
 package cn.itcast.core.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TestTb {
+public class TestTb implements Serializable{
 
 	private int id;
 	private String name;

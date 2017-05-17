@@ -19,14 +19,14 @@
    		http://www.springframework.org/schema/task/spring-task-4.0.xsd
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
 		
-		<context:component-scan base-package="cn.itcast"></context:component-scan>
-		<mvc:annotation-driven />
-		
-		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			<property name="prefix" value="/WEB-INF/console/"></property>
-			<property name="suffix" value=".jsp"></property>
-		</bean>	
-		
-		<import resource="dubbo-consumer.xml"/>
+		<!-- dubbo消费方-->
+		<!-- 1.名称（唯一） -->
+		<dubbo:application name="babasport-console"/>
+		<!-- 2.设置注册中心地址（zookeeper） -->
+		<dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"></dubbo:registry>
+		<!-- 4.暴露实现类 -->
+		<!-- <dubbo:service interface="cn.itcast.core.service.TestTbService" ref="testTbService"></dubbo:service> -->
+		<dubbo:reference interface="cn.itcast.core.service.TestTbService" id="testTbService"></dubbo:reference>
 </beans>
