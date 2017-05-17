@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import cn.itcast.core.bean.TestTb;
 import cn.itcast.core.dao.TestTbDao;
+import cn.itcast.core.service.TestTbService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -17,15 +18,14 @@ import cn.itcast.core.dao.TestTbDao;
 public class TestTbTest {
 
 	@Autowired
-	private TestTbDao testTbDao;
+	private TestTbService testTbService;
 	@Test
 	public void testAdd(){
 		TestTb tb = new TestTb();
-		tb.setName("孙悟空");
+		tb.setName("苍井空");
 		tb.setBirthday(new Date());
 		System.out.println("ppp");
-		System.out.println(testTbDao);
-		testTbDao.insertTestTb(tb);
+		testTbService.insertTestTb(tb);
 		System.out.println("====ppp");
 	}
 }
