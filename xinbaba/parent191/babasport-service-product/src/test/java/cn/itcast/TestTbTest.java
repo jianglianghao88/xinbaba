@@ -22,7 +22,7 @@ public class TestTbTest {
 	@Test
 	public void testAdd(){
 		TestTb tb = new TestTb();
-		tb.setName("苍井空");
+		tb.setName("苍井空10");
 		tb.setBirthday(new Date());
 		System.out.println("ppp");
 		testTbService.insertTestTb(tb);
