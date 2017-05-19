@@ -19,7 +19,7 @@ public class CenterController {
 	@RequestMapping(value="/test/index.do")
 	public String showIndex(Model model){
 		TestTb tb = new TestTb();
-		tb.setName("苍井空");
+		tb.setName("苍井空vs钱金磊");
 		tb.setBirthday(new Date());
 		System.out.println("ppp");
 		testTbService.insertTestTb(tb);
