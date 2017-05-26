@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="shortcut icon" href="//www.taobao.com/favicon.ico" type="image/x-icon">
 <title>新巴巴运动网-后台首页</title>
 </head>
 <frameset rows="72,*" frameborder="0" border="0" framespacing="0">
