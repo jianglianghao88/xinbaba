@@ -2,6 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itcast.core.dao.product.BrandDao">
 
+	<select id="selectCount" resultType="Integer" parameterType="BrandQuery">
+		select count(1)
+		from bbs_brand
+		<where>
+			<if test="name != null">
+				name like concat('%', #{name}, '%')
+			</if>
+			<if test="isDisplay != null">
+				and is_display = #{isDisplay}
+			</if>
+		</where>
+	</select>	
 	<resultMap type="Brand" id="brand">
 		<result column="img_url" property="imgUrl" />
 		<result column="is_display" property="isDisplay" />

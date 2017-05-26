@@ -28,9 +28,11 @@
 		<!-- <dubbo:registry address="192.168.200.128:2181" protocol="zookeeper"></dubbo:registry> -->
 		<!-- 不注册地址，即不用zookeeper时 -->
 		<dubbo:registry address="N/A" check="false"/>
-		<!-- 4.暴露实现类 -->
+		<!-- 4.调用此接口对应的实现类 -->
 		<!-- <dubbo:service interface="cn.itcast.core.service.TestTbService" ref="testTbService"></dubbo:service> -->
 		<dubbo:reference interface="cn.itcast.core.service.TestTbService" id="testTbService"
+		 url="dubbo://127.0.0.1:20880" />
+		 <dubbo:reference interface="cn.itcast.core.service.product.BrandService" id="brandService"
 		 url="dubbo://127.0.0.1:20880" />
 	    <!-- 全局设置 -->
 	    <dubbo:consumer timeout="60000" check="false"></dubbo:consumer>

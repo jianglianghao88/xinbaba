@@ -32,5 +32,5 @@
 		<dubbo:protocol  port="20880" name="dubbo"/>
 		<!-- 4.暴露实现类 -->
 		<dubbo:service interface="cn.itcast.core.service.TestTbService" ref="testTbService"></dubbo:service>
-		
+		<dubbo:service interface="cn.itcast.core.service.product.BrandService" ref="brandService"/>
 </beans>

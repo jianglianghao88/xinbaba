@@ -16,6 +16,7 @@ public class BrandServiceImpl implements BrandService{
 	private BrandDao brandDao;
 	
 	//分页查询
+	@Override
 	public Pagination selectPaginationByQuery(String name , Integer isDisplay , Integer pageNo){
 		BrandQuery brandQuery = new BrandQuery();
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
