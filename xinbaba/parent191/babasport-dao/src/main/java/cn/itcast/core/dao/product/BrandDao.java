@@ -10,4 +10,6 @@ public interface BrandDao {
 	public List<Brand> selectBrandListByQuery(BrandQuery brandQuery);
 	
 	public Integer selectCount(BrandQuery brandQuery);
+	
+	public Brand selectBrandById(Long id);
 }

@@ -34,4 +34,12 @@
 			limit #{startRow} , #{pageSize}
 		</if>
 	</select>	
+	
+	<select id="selectBrandById" resultMap="brand" parameterType="Long">
+		select id , name , description , img_url , sort , is_display
+		from bbs_brand
+		<where>
+			id = #{id}
+		</where>
+	</select>	
 </mapper>
