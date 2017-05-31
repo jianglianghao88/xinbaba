@@ -33,4 +33,5 @@
 		<!-- 4.暴露实现类 -->
 		<dubbo:service interface="cn.itcast.core.service.TestTbService" ref="testTbService"></dubbo:service>
 		<dubbo:service interface="cn.itcast.core.service.product.BrandService" ref="brandService"/>
+		<dubbo:service interface="cn.itcast.core.service.product.UploadService" ref="uploadService"/>
 </beans>

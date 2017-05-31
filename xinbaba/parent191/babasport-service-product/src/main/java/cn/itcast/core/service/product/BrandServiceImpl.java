@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.itcast.common.page.Pagination;
+import cn.itcast.core.bean.product.Brand;
 import cn.itcast.core.bean.product.BrandQuery;
 import cn.itcast.core.dao.product.BrandDao;
 
@@ -23,19 +24,35 @@ public class BrandServiceImpl implements BrandService{
 		
 		brandQuery.setPageSize(3);
 		
+		StringBuilder params = new StringBuilder(); 
+		
 		if(null != name){
+			params.append("name=").append(name);
 			brandQuery.setName(name);
 		}
 		if(null != isDisplay){
+			params.append("&isDisplay=").append(isDisplay);
 			brandQuery.setIsDisplay(isDisplay);
 		}else{
+			params.append("&isDisplay=").append(1);
 			brandQuery.setIsDisplay(1);
+			
 		}
 		
 		Pagination pagination = new Pagination(brandQuery.getPageNo(), brandQuery.getPageSize(), brandDao.selectCount(brandQuery));
 		
 		pagination.setList(brandDao.selectBrandListByQuery(brandQuery));
 		
+		String url = "/brand/list.do";
+		pagination.pageView(url, params.toString());
+		
 		return pagination;
+	}
+
+	@Override
+	public Brand selectBrandById(Long id) {
+
+		Brand brand = brandDao.selectBrandById(id);
+		return brand;
 	}
 }

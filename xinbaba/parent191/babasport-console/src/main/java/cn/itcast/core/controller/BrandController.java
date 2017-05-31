@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.itcast.common.page.Pagination;
+import cn.itcast.core.bean.product.Brand;
 import cn.itcast.core.service.product.BrandService;
 
 @Controller
@@ -26,5 +27,14 @@ public class BrandController {
 		model.addAttribute("isDisplay", isDisplay == null ? 1 : isDisplay);
 		
 		return "brand/list";
+	}
+	
+	@RequestMapping("/brand/toEdit.do")
+	public String toEdit(Long id , Model model){
+		Brand brand = brandService.selectBrandById(id);
+		
+		model.addAttribute("brand", brand);
+		
+		return "brand/edit";
 	}
 }
