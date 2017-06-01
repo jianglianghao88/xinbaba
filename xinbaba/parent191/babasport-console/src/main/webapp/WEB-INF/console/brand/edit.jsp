@@ -15,6 +15,7 @@ function uploadPic(){
 			success : function(data){
 				$("#allUrl").attr("src",data.url);
 				$("#imgUrl").val(data.url);
+				alert("上传成功");
 			}
 	}
 	$("#jvForm").ajaxSubmit(options);
