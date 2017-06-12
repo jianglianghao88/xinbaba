@@ -12,4 +12,8 @@ public interface BrandDao {
 	public Integer selectCount(BrandQuery brandQuery);
 	
 	public Brand selectBrandById(Long id);
+	
+	public void updateBrandById(Brand brand);
+	
+	public void deletesByIds(Long[] ids);
 }

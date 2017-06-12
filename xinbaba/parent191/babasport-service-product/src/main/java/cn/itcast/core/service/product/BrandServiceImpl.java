@@ -22,7 +22,7 @@ public class BrandServiceImpl implements BrandService{
 		BrandQuery brandQuery = new BrandQuery();
 		brandQuery.setPageNo(Pagination.cpn(pageNo));
 		
-		brandQuery.setPageSize(3);
+		brandQuery.setPageSize(5);
 		
 		StringBuilder params = new StringBuilder(); 
 		
@@ -54,5 +54,17 @@ public class BrandServiceImpl implements BrandService{
 
 		Brand brand = brandDao.selectBrandById(id);
 		return brand;
+	}
+
+	@Override
+	public void updateBrandById(Brand brand) {
+
+		brandDao.updateBrandById(brand);
+	}
+
+	@Override
+	public void deletesByIds(Long[] ids) {
+		// TODO Auto-generated method stub
+		brandDao.deletesByIds(ids);
 	}
 }

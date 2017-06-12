@@ -37,4 +37,16 @@ public class BrandController {
 		
 		return "brand/edit";
 	}
+	@RequestMapping("/brand/edit.do")
+	public String edit(Brand brand){
+		brandService.updateBrandById(brand);
+		
+		return "redirect:/brand/list.do";
+	}
+	@RequestMapping("/brand/deletes.do")
+	public String deletes(Long[] ids){
+		brandService.deletesByIds(ids);
+		
+		return "forward:/brand/list.do";
+	}
 }

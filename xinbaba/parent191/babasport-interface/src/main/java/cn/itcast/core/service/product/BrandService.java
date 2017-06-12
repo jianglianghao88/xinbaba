@@ -9,4 +9,8 @@ public interface BrandService {
 	public Pagination selectPaginationByQuery(String name,Integer isDisplay,Integer pageNo);
 	
 	public Brand selectBrandById(Long id);
+	
+	public void updateBrandById(Brand brand);
+	
+	public void deletesByIds(Long[] ids);
 }
