@@ -77,4 +77,9 @@
 			</foreach>
 		</where>
 	</delete>
+	
+	<insert id="addBrand" parameterType="Brand" >
+		INSERT INTO bbs_brand (NAME , description , img_url , sort , is_display)
+		VALUES (#{name},#{description},#{imgUrl},#{sort},#{isDisplay})
+	</insert>
 </mapper>

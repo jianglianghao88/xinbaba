@@ -13,4 +13,6 @@ public interface BrandService {
 	public void updateBrandById(Brand brand);
 	
 	public void deletesByIds(Long[] ids);
+	
+	public void addBrand(Brand brand);
 }

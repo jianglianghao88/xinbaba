@@ -28,7 +28,7 @@
 <div class="box-positon">
 	<div class="rpos">当前位置: 品牌管理 - 列表</div>
 	<form class="ropt">
-		<input class="add" type="button" value="添加" onclick="javascript:window.location.href='add.jsp'"/>
+		<input class="add" type="button" value="添加" onclick="javascript:window.location.href='toAdd.do'"/>
 	</form>
 	<div class="clear"></div>
 </div>
@@ -62,8 +62,8 @@
 			<td align="center">${brand.id }</td>
 			<td align="center">${brand.name }</td>
 			<td align="center"><img width="40" height="40" src="${brand.imgUrl }"/></td>
-			<td align="center"></td>
-			<td align="center">99</td>
+			<td align="center">${brand.description}</td>
+			<td align="center">${brand.sort}</td>
 			<td align="center">
 				<c:if test="${isDisplay == 1 }">是</c:if>
 				<c:if test="${isDisplay == 0 }">否</c:if>

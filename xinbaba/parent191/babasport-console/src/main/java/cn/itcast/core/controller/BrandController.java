@@ -49,4 +49,16 @@ public class BrandController {
 		
 		return "forward:/brand/list.do";
 	}
+	@RequestMapping("/brand/toAdd.do")
+	public String toAdd(){
+		
+		return "brand/add";
+	}
+	@RequestMapping("/brand/add.do")
+	public String add(Brand brand){
+		
+		brandService.addBrand(brand);
+		
+		return "redirect:/brand/list.do";
+	}
 }
