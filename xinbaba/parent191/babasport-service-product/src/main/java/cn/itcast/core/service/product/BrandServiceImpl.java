@@ -67,4 +67,10 @@ public class BrandServiceImpl implements BrandService{
 		// TODO Auto-generated method stub
 		brandDao.deletesByIds(ids);
 	}
+
+	@Override
+	public void addBrand(Brand brand) {
+		// TODO Auto-generated method stub
+		brandDao.addBrand(brand);
+	}
 }
