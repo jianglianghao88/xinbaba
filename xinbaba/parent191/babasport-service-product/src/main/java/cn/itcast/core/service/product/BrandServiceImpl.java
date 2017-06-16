@@ -1,5 +1,7 @@
 package cn.itcast.core.service.product;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,5 +74,14 @@ public class BrandServiceImpl implements BrandService{
 	public void addBrand(Brand brand) {
 		// TODO Auto-generated method stub
 		brandDao.addBrand(brand);
+	}
+
+	@Override
+	public List<Brand> selectBrandListByQuery(Integer isDisplay) {
+
+		BrandQuery brandQuery = new BrandQuery();
+		brandQuery.setIsDisplay(isDisplay);
+		List<Brand> list = brandDao.selectBrandListByQuery(brandQuery);
+		return list;
 	}
 }
