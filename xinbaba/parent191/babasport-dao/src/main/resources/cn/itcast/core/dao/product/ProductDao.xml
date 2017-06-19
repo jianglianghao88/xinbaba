@@ -130,7 +130,7 @@
       #{packageList,jdbcType=VARCHAR}, #{colors,jdbcType=VARCHAR}, #{sizes,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.itcast.core.bean.product.Product" >
+  <insert id="insertSelective" parameterType="cn.itcast.core.bean.product.Product" useGeneratedKeys="true" keyProperty="id">
     insert into bbs_product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

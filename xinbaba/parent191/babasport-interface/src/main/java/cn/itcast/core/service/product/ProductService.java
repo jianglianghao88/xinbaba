@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.itcast.common.page.Pagination;
 import cn.itcast.core.bean.product.Color;
+import cn.itcast.core.bean.product.Product;
 
 public interface ProductService {
 
@@ -11,5 +12,7 @@ public interface ProductService {
 			Boolean isShow, Integer pageNo);
 
 	List<Color> selectColorList();
+	
+	void insertProdcut(Product product);
 
 }
