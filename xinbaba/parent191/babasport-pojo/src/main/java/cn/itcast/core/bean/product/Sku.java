@@ -43,8 +43,22 @@ public class Sku implements Serializable {
      * 库存
      */
     private Integer stock;
-
+    
     /**
+     * 颜色
+     */
+     private Color color;
+     
+     
+    public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	/**
      * 购买限制
      */
     private Integer upperLimit;

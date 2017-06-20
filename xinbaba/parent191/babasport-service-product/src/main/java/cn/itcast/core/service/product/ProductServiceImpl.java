@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import redis.clients.jedis.Jedis;
 import cn.itcast.common.page.Pagination;
 import cn.itcast.core.bean.product.Color;
 import cn.itcast.core.bean.product.ColorQuery;
@@ -28,6 +29,8 @@ public class ProductServiceImpl implements ProductService {
 	private ColorDao colorDao;
 	@Autowired
 	private SkuDao skuDao;
+	@Autowired
+	private Jedis jedis;
 
 	//分页查询
 		@Override
@@ -72,7 +75,12 @@ public class ProductServiceImpl implements ProductService {
 		}
 		//保存商品
 		public void insertProdcut(Product product){
-			
+			Long id = jedis.incr("pno");
+			if(id == null){
+				jedis.set("pno", System.currentTimeMillis()+"");
+				id = jedis.incr("pno");
+			}
+			product.setId(id);
 			product.setIsShow(false);
 			product.setIsDel(true);
 			product.setCreateTime(new Date());

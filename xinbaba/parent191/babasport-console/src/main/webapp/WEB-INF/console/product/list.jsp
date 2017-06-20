@@ -70,7 +70,7 @@ function isShow(){
 			<td><input type="checkbox" name="ids" value="${product.id }"/></td>
 			<td>${product.id }</td>
 			<td align="center">${product.name }</td>
-			<td align="center"><img width="50" height="50" src="/images/pic/ppp.jpg"/></td>
+			<td align="center"><img width="50" height="50" src="${product.images[0] }"/></td>
 			<td align="center">是</td>
 			<td align="center">是</td>
 			<td align="center">是</td>
@@ -79,7 +79,7 @@ function isShow(){
 				<c:if test="${!isShow }">下架</c:if>
 			</td>
 			<td align="center">
-			<a href="#" class="pn-opt">查看</a> | <a href="#" class="pn-opt">修改</a> | <a href="#" onclick="if(!confirm('您确定删除吗？')) {return false;}" class="pn-opt">删除</a> | <a href="../sku/list.jsp" class="pn-opt">库存</a>
+			<a href="#" class="pn-opt">查看</a> | <a href="#" class="pn-opt">修改</a> | <a href="#" onclick="if(!confirm('您确定删除吗？')) {return false;}" class="pn-opt">删除</a> | <a href="/sku/list.do?productId=${product.id }" class="pn-opt">库存</a>
 			</td>
 		</tr>
 		

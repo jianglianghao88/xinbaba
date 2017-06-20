@@ -79,6 +79,9 @@ public class Product implements Serializable {
      */
     private Date createTime;
 
+    public String[] getImages() {
+    	return imgUrl.split(",");
+    }
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
