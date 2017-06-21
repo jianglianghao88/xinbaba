@@ -13,6 +13,29 @@
 		$("#l" + skuId).attr("disabled",false);
 		$("#f" + skuId).attr("disabled",false);
 	}
+	function addSku(skuId){
+		var m = $("#m" + skuId).attr("disabled",true).val();
+		var p = $("#p" + skuId).attr("disabled",true).val();
+		var i = $("#i" + skuId).attr("disabled",true).val();
+		var l = $("#l" + skuId).attr("disabled",true).val();
+		var f = $("#f" + skuId).attr("disabled",true).val();
+		
+		var url = "/sku/addSku.do";
+		var param = '{"marketPrice":'+m+',"price":'+p+',"stock":'+i+',"upperLimit":'+l+',"deliveFee":'+f+',"id":'+skuId+'}';
+		/* $.post(url,{"sku":param},function(data){
+			alert(data.message);
+		},"json"); */
+		$.ajax({ 
+            type:"POST", 
+            url:url, 
+            dataType:"json",      
+            contentType:"application/json",               
+            data:param, 
+            success:function(data){ 
+            	alert(data.message);                     
+            } 
+         }); 
+	}
 	function update(skuId){
 		$("#"+skuId).attr("disabled",true);
 	}
@@ -55,7 +78,7 @@
 				<td align="center"><input type="text" id="l${sku.id }" value="${sku.upperLimit }" disabled="disabled" size="10" onchange="update('l'+${sku.id })"/></td>
 				<td align="center"><input type="text" id="f${sku.id }" value="${sku.deliveFee }" disabled="disabled" size="10" onchange="update('f'+${sku.id })"/></td>
 				<td align="center">不是</td>
-				<td align="center"><a href="javascript:updateSku(${sku.id })" class="pn-opt">修改</a> | <a href="javascript:addSku(52)" class="pn-opt">保存</a></td>
+				<td align="center"><a href="javascript:updateSku(${sku.id })" class="pn-opt">修改</a> | <a href="javascript:addSku(${sku.id })" class="pn-opt">保存</a></td>
 			</tr>
 		</c:forEach>
 		

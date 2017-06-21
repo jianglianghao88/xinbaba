@@ -8,4 +8,6 @@ public interface SkuService {
 
 	List<Sku> getSkuListByProductId(Long productId);
 
+	void updateSkuById(Sku sku);
+
 }
