@@ -15,4 +15,6 @@ public interface ProductService {
 	
 	void insertProdcut(Product product);
 
+	void isShow(Long[] ids);
+
 }
