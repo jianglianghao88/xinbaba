@@ -106,4 +106,17 @@ public class ProductServiceImpl implements ProductService {
 				}
 			}
 		}
+		@Override
+		public void isShow(Long[] ids){
+			Product product = new Product();
+			product.setIsShow(true);
+			for (Long id : ids) {
+				product.setId(id);
+				productDao.updateByPrimaryKeySelective(product);
+			}
+			
+			//更新solr服务器
+			
+			//页面静态化
+		}
 }
