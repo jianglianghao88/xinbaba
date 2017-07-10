@@ -20,9 +20,8 @@
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	
-		<!-- redis -->
-		<bean class="redis.clients.jedis.Jedis" id="jedis">
-			<constructor-arg name="host" value="192.168.0.101"></constructor-arg>
-			<constructor-arg name="port" value="6379"></constructor-arg>
-		</bean>
+	<bean  id="solrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		<constructor-arg value="http://192.168.0.101:8080/solr"></constructor-arg>
+	</bean>
+	
 </beans>

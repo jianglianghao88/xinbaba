@@ -19,10 +19,6 @@
    		http://www.springframework.org/schema/task/spring-task-4.0.xsd
 		http://code.alibabatech.com/schema/dubbo        
 		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-	
-		<!-- redis -->
-		<bean class="redis.clients.jedis.Jedis" id="jedis">
-			<constructor-arg name="host" value="192.168.0.101"></constructor-arg>
-			<constructor-arg name="port" value="6379"></constructor-arg>
-		</bean>
+		
+		<import resource="config/*.xml"/>
 </beans>

@@ -78,8 +78,24 @@ public class Product implements Serializable {
      * 添加时间
      */
     private Date createTime;
+    
+    /**
+     * 最低价格
+     * @return
+     */
+    private Float price;
+    
+    
 
-    public String[] getImages() {
+    public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	public String[] getImages() {
     	return imgUrl.split(",");
     }
     private static final long serialVersionUID = 1L;
@@ -229,4 +245,6 @@ public class Product implements Serializable {
         sb.append("]");
         return sb.toString();
     }
+
+	
 }

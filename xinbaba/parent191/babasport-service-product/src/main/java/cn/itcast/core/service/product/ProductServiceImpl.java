@@ -1,8 +1,14 @@
 package cn.itcast.core.service.product;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +19,7 @@ import cn.itcast.core.bean.product.Color;
 import cn.itcast.core.bean.product.ColorQuery;
 import cn.itcast.core.bean.product.Product;
 import cn.itcast.core.bean.product.ProductQuery;
+import cn.itcast.core.bean.product.SkuQuery;
 import cn.itcast.core.bean.product.ProductQuery.Criteria;
 import cn.itcast.core.bean.product.Sku;
 import cn.itcast.core.dao.product.ColorDao;
@@ -31,6 +38,8 @@ public class ProductServiceImpl implements ProductService {
 	private SkuDao skuDao;
 	@Autowired
 	private Jedis jedis;
+	@Autowired
+	private SolrServer solrServer;
 
 	//分页查询
 		@Override
@@ -113,6 +122,33 @@ public class ProductServiceImpl implements ProductService {
 			for (Long id : ids) {
 				product.setId(id);
 				productDao.updateByPrimaryKeySelective(product);
+				
+				SolrInputDocument doc = new SolrInputDocument();
+				doc.setField("id", id);
+				
+				Product p = productDao.selectByPrimaryKey(id);
+				doc.setField("name_ik", p.getName());
+				doc.setField("url", p.getImages()[0]);
+				
+				SkuQuery skuQuery = new SkuQuery();
+				skuQuery.createCriteria().andProductIdEqualTo(id);
+				skuQuery.setOrderByClause("price asc");
+				skuQuery.setPageNo(1);
+				skuQuery.setPageSize(1);
+				skuQuery.setFields("price");
+				List<Sku> skus = skuDao.selectByExample(skuQuery);
+				doc.setField("price", skus.get(0).getPrice());
+				doc.setField("brandId", p.getBrandId());
+				try {
+					solrServer.add(doc);
+					solrServer.commit();
+				} catch (SolrServerException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 			
 			//更新solr服务器
