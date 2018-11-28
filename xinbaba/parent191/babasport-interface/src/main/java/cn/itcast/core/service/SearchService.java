@@ -2,10 +2,14 @@ package cn.itcast.core.service;
 
 import java.util.List;
 
-import cn.itcast.core.bean.product.Product;
+import cn.itcast.common.page.Pagination;
 
 public interface SearchService {
 
-	List<Product> searchProductByKeyWord(String keyword) throws Exception;
+
+	Pagination searchProductByKeyWord(Integer pageNo, String keyword, String price, Long brandId)
+			throws Exception;
+
+	void addProductToSolr(Long id);
 
 }

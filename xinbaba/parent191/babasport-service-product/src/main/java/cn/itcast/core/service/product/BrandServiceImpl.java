@@ -1,11 +1,16 @@
 package cn.itcast.core.service.product;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import redis.clients.jedis.Jedis;
 import cn.itcast.common.page.Pagination;
 import cn.itcast.core.bean.product.Brand;
 import cn.itcast.core.bean.product.BrandQuery;
@@ -17,6 +22,8 @@ public class BrandServiceImpl implements BrandService{
 
 	@Autowired
 	private BrandDao brandDao;
+	@Autowired
+	private Jedis jedis;
 	
 	//分页查询
 	@Override
@@ -60,6 +67,8 @@ public class BrandServiceImpl implements BrandService{
 
 	@Override
 	public void updateBrandById(Brand brand) {
+		
+		jedis.hset("brand",brand.getId() +  "", brand.getName());
 
 		brandDao.updateBrandById(brand);
 	}
@@ -73,6 +82,7 @@ public class BrandServiceImpl implements BrandService{
 	@Override
 	public void addBrand(Brand brand) {
 		// TODO Auto-generated method stub
+		jedis.hset("brand",brand.getId() +  "", brand.getName());
 		brandDao.addBrand(brand);
 	}
 
@@ -83,5 +93,23 @@ public class BrandServiceImpl implements BrandService{
 		brandQuery.setIsDisplay(isDisplay);
 		List<Brand> list = brandDao.selectBrandListByQuery(brandQuery);
 		return list;
+	}
+	
+	@Override
+	public List<Brand> selectBrandListByRedis(){
+		List<Brand> brands  = new ArrayList<>();
+		
+		Map<String, String> map = jedis.hgetAll("brand");
+		Set<Entry<String, String>> entrySet = map.entrySet();
+		
+		for (Entry<String, String> entry : entrySet) {
+			Brand brand = new Brand();
+			
+			brand.setId(Long.parseLong(entry.getKey()));
+			brand.setName(entry.getValue());
+			brands.add(brand);
+		}
+		
+		return brands;
 	}
 }

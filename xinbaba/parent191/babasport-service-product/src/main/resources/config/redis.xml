@@ -22,7 +22,7 @@
 	
 		<!-- redis -->
 		<bean class="redis.clients.jedis.Jedis" id="jedis">
-			<constructor-arg name="host" value="192.168.0.101"></constructor-arg>
+			<constructor-arg name="host" value="192.168.33.66"></constructor-arg>
 			<constructor-arg name="port" value="6379"></constructor-arg>
 		</bean>
 </beans>

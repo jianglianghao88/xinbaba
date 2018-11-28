@@ -27,6 +27,14 @@
 		<mvc:resources location="/css/" mapping="/css/**"/>
 		<mvc:resources location="/images/" mapping="/images/**"/>
 		
+		<!-- 拦截器 -->
+		<mvc:interceptors>
+			<mvc:interceptor>
+				<mvc:mapping path="/buyer/**"/>
+				<bean class="cn.itcast.core.interceptor.BuyerInterceptor"></bean>
+			</mvc:interceptor>
+		</mvc:interceptors>
+		
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="prefix" value="/WEB-INF/portal/"></property>
 			<property name="suffix" value=".jsp"></property>

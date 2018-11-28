@@ -97,7 +97,10 @@ function trueBuy(){
 									<span class="price"> ¥${item.sku.price} </span>
 								</div>
 								<div class="cell p-promotion"></div>
-								<div class="cell p-inventory stock-11345721">有货</div>
+								<div class="cell p-inventory stock-11345721">
+									<c:if test="${item.isHave }">有货</c:if>
+									<c:if test="${!item.isHave }">无货</c:if>
+								</div>
 								<div class="cell p-quantity" for-stock="for-stock-11345721">
 									<div class="quantity-form">
 										<a href="javascript:void(0);" class="decrement">-</a> <input
@@ -116,14 +119,14 @@ function trueBuy(){
 				<!-- product-list结束 -->
 				<div class="cart-toolbar clearfix">
 					<div class="total fr">
-						<p>
+						<p><!-- buyerCart.productPrice -->
 							<span class="totalSkuPrice">¥${buyerCart.productPrice }</span>商品金额：
 						</p>
-						<p>
+						<p>	<!-- buyerCart.fee  -->
 							<span id="totalRePrice">- ¥${buyerCart.fee }</span>运费：
 						</p>
 					</div>
-					<div class="amout fr">
+					<div class="amout fr"><!-- buyerCart.productAmount }-->
 						<span id="selectedCount">${buyerCart.productAmount }</span> 件商品
 					</div>
 				</div>
@@ -144,7 +147,7 @@ function trueBuy(){
 									<a class="checkout" onclick="trueBuy()">去结算<b></b></a>
 								</span>
 							</div>
-							<div class="total fr">
+							<div class="total fr"><!-- buyerCart.totalPrice -->
 								总计： <span class="totalSkuPrice">¥${buyerCart.totalPrice }</span>
 							</div>
 						</div>

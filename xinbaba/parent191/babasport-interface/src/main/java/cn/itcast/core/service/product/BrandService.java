@@ -20,4 +20,6 @@ public interface BrandService {
 	public void addBrand(Brand brand);
 	
 	public List<Brand> selectBrandListByQuery(Integer isDiaplay);
+
+	List<Brand> selectBrandListByRedis();
 }

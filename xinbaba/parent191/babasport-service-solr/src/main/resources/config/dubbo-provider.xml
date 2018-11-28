@@ -31,5 +31,5 @@
 		<!-- 3.暴露该服务的地址和端口号，默认是20880 -->
 		<dubbo:protocol  port="20881" name="dubbo"/>
 		<!-- 4.暴露实现类 -->
-		<!-- <dubbo:service interface="cn.itcast.core.service.TestTbService" ref="testTbService"></dubbo:service> -->
+		<dubbo:service interface="cn.itcast.core.service.SearchService" ref="searchService"></dubbo:service>
 </beans>

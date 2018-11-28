@@ -36,9 +36,76 @@ window.pageConfig = {
 		HM : '0'
 	}
 };
+var skuId;
+var colorId;
+function colorToRed(target,id){
+	colorId = id;
+	$('#colors div').removeClass('selected');
+	$(target).addClass('selected');
+	var html = "";
+	var flag = 0;
+	<c:forEach items="${skus}" var="sku">
+		if(id == ${sku.colorId}){
+			if(flag == 0){
+				html += '<div class="item selected" id="${sku.size}" onclick="sizeToRed(this,\'${sku.size}\')">'
+					+ '<b></b><a href="javascript:;" title="${sku.size}" >${sku.size}</a>'
+				    + '</div>';
+				   flag = 1;
+				   
+				   $('#bbs-price').html('${sku.price}');
+				   
+				   skuId = '${sku.id}';
+			}else{
+				html += '<div class="item" id="${sku.size}" onclick="sizeToRed(this,\'${sku.size}\')">'
+					+ '<b></b><a href="javascript:;" title="${sku.size}" >${sku.size}</a>'
+				    + '</div>'
+			}
+			
+		}
+	</c:forEach>
+	$('#sizes').html(html);
+}
+function sizeToRed(target,size){
+	$('#sizes div').removeClass('selected');
+	$(target).addClass('selected');
+	
+	var html = "";
+	var flag = 0;
+	<c:forEach items="${skus}" var="sku">
+		if(colorId == '${sku.colorId}' && size == '${sku.size}'){
+			/* if(flag == 0){
+				html += '<div class="item selected" onclick="colorToRed(this,\'${sku.color.id}\')">'
+				     + '<b></b>'
+					 + '<a href="javascript:;" title="${color.name }" >'
+					 + '<img data-img="1" src="/images/53f44cc2N0b714cb2_002.jpg"alt="灰色三件套" height="25" width="25"><i>${color.name }</i></a>'
+					 + '</div>';
+				   flag = 1; */
+				   
+				   $('#bbs-price').html('${sku.price}');
+				   skuId = '${sku.id}';
+			/* }else{
+				html += '<div class="item" onclick="colorToRed(this,\'${sku.color.id}\')">'
+				     + '<b></b>'
+					 + '<a href="javascript:;" title="${color.name }" >'
+					 + '<img data-img="1" src="/images/53f44cc2N0b714cb2_002.jpg"alt="灰色三件套" height="25" width="25"><i>${color.name }</i></a>'
+					 + '</div>';
+			} */
+			
+		}
+	</c:forEach>
+	
+}
+$(function(){
+	$("#colors div:first").trigger("click");
+});
+
+function addCart(){
+	window.location.href = "/addCart?skuId="+skuId+"&amount="+$("#buy-num").val();
+}
 </script>
 </head>
 <body>
+
 <!-- header start -->
 <jsp:include page="commons/header.jsp" />
 <!-- header end -->
@@ -143,9 +210,7 @@ window.pageConfig = {
 			<div id="choose-version" class="li p-choose">
 				<div class="dt">选择尺码：</div>
 				<div class="dd" id="sizes">
-					<div class="item" id="S" onclick="sizeToRed(this,'S')">
-						<b></b><a href="javascript:;" title="S" >S</a>
-					</div>
+					
 				</div>
 			</div>
 				<!--brand-bar-->

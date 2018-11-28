@@ -10,6 +10,45 @@
 <link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
 <link type="text/css" rel="stylesheet" href="/css/search.css">
 <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+	var keyword = '${keyword}';
+	var brandId = '${brandId}';
+	var price = '${price}';
+
+	function fqBrand(id){
+		if(price != ''){
+			window.location.href = "/search?keyword="+keyword+"&brandId="+id+"&price="+price;
+		}else{
+			window.location.href = "/search?keyword="+keyword+"&brandId="+id;
+		}
+	}
+	
+	function fqPrice(id){
+		if(brandId != ''){
+			window.location.href = "/search?keyword="+keyword+"&brandId="+brandId+"&price="+id;
+		}else{
+			window.location.href = "/search?keyword="+keyword+"&price="+id;
+		}
+	}
+	
+	function deleteOpt(type){
+		if(type == '品牌'){
+			if(price != ""){
+				
+			window.location.href = "/search?keyword="+keyword+"&price="+price;
+			}else{
+				window.location.href = "/search?keyword="+keyword;
+			}
+		}else{
+			if(brandId != ""){
+				
+			window.location.href = "/search?keyword="+keyword+"&brandId="+brandId;
+			}else{
+				window.location.href = "/search?keyword="+keyword;
+			}
+		}
+	}
+</script>
 
 </head>
 <body>
@@ -46,7 +85,7 @@
 			<div class="sl-b-selected J_brandSelected">
 				<span class="crumbs-arrow">已选条件：</span>
 					<c:forEach items="${map }" var="m">
-						<a title="依琦莲（yiqilian）"  href="javascript:;" class="crumb-select-item">
+						<a title="依琦莲（yiqilian）" onclick="deleteOpt('${m.key }')" href="javascript:;" class="crumb-select-item">
 							<b>${m.key }：</b><em>${m.value }</em><i></i>
 						</a>
 					</c:forEach>
@@ -262,7 +301,7 @@
 					</div>
 				</div>
 				<div class="p-name p-name-type-2">
-					<a target="_blank" title="满129立减10,199减20优惠券,支持货到付款" href="javascript:;" onclick="">
+					<a title="满129立减10,199减20优惠券,支持货到付款" href="javascript:;" onclick="window.open('http://localhost:8081/html/product/${product.id}.html')">
 						<em>${product.name }</em>
 					</a>
 				</div>

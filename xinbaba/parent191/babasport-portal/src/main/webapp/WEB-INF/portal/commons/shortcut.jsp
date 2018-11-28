@@ -1,4 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		url:"http://localhost:8083/isLogin.aspx",
+		type:"post",
+		dataType:"jsonp",
+		success:function(data){
+			if(data){
+				$(".isNotLogin").hide();
+			}else{
+				$(".isLogin").hide();
+			}
+		}
+	});
+});
+
+//搜索
+function login(){
+	window.location.href = "http://localhost:8083/login.aspx?returnUrl=" + encodeURIComponent(window.location.href);
+}
+</script>
 <div id="shortcut-2013">
 	<div class="w">
 		<ul class="fl lh">
@@ -9,10 +31,10 @@
 		<ul class="fr lh">
 			<li class="fore1" id="loginbar" clstag="homepage|keycount|home2013|01b">
 				您好！欢迎来到新巴巴运动网！
-				<a href="javascript:;" onclick="login()">[登录]</a>&nbsp;
-				<a href="javascript:;" onclick="regist()">[免费注册]</a>
-				<a href="javascript:;" onclick="logout()">[退出]</a>
-				<a href="javascript:;" onclick="myOrder()" >我的订单</a>
+				<a href="javascript:;" onclick="login()" class="isNotLogin">[登录]</a>&nbsp;
+				<a href="javascript:;" onclick="regist()" class="isNotLogin">[免费注册]</a>
+				<a href="javascript:;" onclick="logout()" class="isLogin">[退出]</a>
+				<a href="javascript:;" onclick="myOrder()" class="isLogin">我的订单</a>
 			</li>
 			<li class="fore2-1 ld" id="jd-vip">
 				<s></s>
